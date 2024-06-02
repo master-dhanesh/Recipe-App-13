@@ -31,7 +31,6 @@ const Create = () => {
         toast.success("Recipe Created Successfully!");
         navigate("/recipes");
     };
-    console.log(recipes);
     return (
         <form onSubmit={SubmitHandler} className="w-[70%] m-auto  pb-5">
             <h1 className="text-7xl mt-5 font-extrabold text-green-600 mb-[5%]">
