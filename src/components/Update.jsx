@@ -28,6 +28,7 @@ const Update = () => {
         const index = copyrecipe.findIndex((r) => r.id == id);
         copyrecipe[index] = updatedRecipe;
         setrecipes(copyrecipe);
+        localStorage.setItem("recipes", JSON.stringify(copyrecipe));
         toast.success("Recipe Updated Successfully!");
         navigate("/recipes");
     };
