@@ -1,10 +1,9 @@
 import { useLocation } from "react-router-dom";
 import Card from "./Card";
-import { useContext } from "react";
-import { recipecontext } from "../contexts/RecipeContext";
+import { useSelector } from "react-redux";
 const Recipes = () => {
     const { pathname } = useLocation();
-    const [recipes] = useContext(recipecontext);
+    const { recipes } = useSelector((state) => state.recipeReducer);
 
     return (
         <div className=" ">

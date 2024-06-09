@@ -1,13 +1,13 @@
 import { nanoid } from "nanoid";
-import React, { useContext, useState } from "react";
-import { recipecontext } from "../contexts/RecipeContext";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { asyncadd } from "../store/actions/recipeActions";
+import { useDispatch } from "react-redux";
 
 const Create = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const [recipes, setrecipes] = useContext(recipecontext);
 
     const [image, setimage] = useState("");
     const [title, settitle] = useState("");
@@ -25,13 +25,7 @@ const Create = () => {
             ingredients,
             instructions,
         };
-
-        // code to validate the input fields...
-        setrecipes([...recipes, newRecipe]);
-        localStorage.setItem(
-            "recipes",
-            JSON.stringify([...recipes, newRecipe])
-        );
+        dispatch(asyncadd(newRecipe));
         toast.success("Recipe Created Successfully!");
         navigate("/recipes");
     };
